@@ -5,7 +5,7 @@ import {defineConfig} from 'vite';
 
 export default defineConfig(() => {
   return {
-    base: '/BattleArena/',
+    base: '/Battle-Arena/',
     plugins: [react(), tailwindcss()],
     resolve: {
       alias: {
