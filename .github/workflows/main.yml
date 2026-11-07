@@ -1,0 +1,51 @@
+name: Deploy Website to GitHub Pages
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+# Cấp quyền cho GitHub Actions để xuất bản giao diện lên GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps:`.deployment.outputs.page_url `}}
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout mã nguồn
+      uses: actions/checkout@v4
+
+    - name: Cài đặt môi trường Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: 22
+        cache: 'npm'
+
+    - name: Cài đặt thư viện
+      run: npm install --legacy-peer-deps
+
+    - name: Biên dịch dự án (Build)
+      run: npm run build
+
+    - name: Cấu hình GitHub Pages
+      uses: actions/configure-pages@v5
+
+    - name: Tải lên sản phẩm đã Build (dist)
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: './dist' # Thư mục chứa website sau khi build của Vite
+
+    - name: Xuất bản lên GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
