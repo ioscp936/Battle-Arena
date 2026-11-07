@@ -1,0 +1,6 @@
+{
+  "name": "Huyền Thoại Trảm Ma: Đấu Trường Thần Vực",
+  "description": "Game hành động nhập vai diệt quái vượt 5 đại cảnh giới, săn boss sử thi, mở hòm báu, combo cuồng bạo, đấu trường sinh tử và tùy chỉnh trang phục huyền thoại.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

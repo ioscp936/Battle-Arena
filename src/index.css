@@ -1,0 +1,39 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    background-color: #07090e;
+    color: #e2e8f0;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    overflow-x: hidden;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  .font-cinzel {
+    font-family: 'Cinzel', serif;
+  }
+
+  .font-teko {
+    font-family: 'Teko', sans-serif;
+  }
+}
+
+/* Custom glowing effects and game animations */
+@keyframes pulse-glow {
+  0%, 100% {
+    filter: drop-shadow(0 0 8px rgba(239, 68, 68, 0.6));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(239, 68, 68, 0.9));
+  }
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s infinite ease-in-out;
+}
+
+/* Prevent unwanted browser behaviors in game */
+canvas {
+  touch-action: none;
+}
